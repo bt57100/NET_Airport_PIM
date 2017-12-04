@@ -1,0 +1,7 @@
+C:\Users\bt57100\Documents\Visual Studio 2015\Projects\MyAirport.Pim\Models.AbstractDefinition\bin\Release\Models.AbstractDefinition.dll
+C:\Users\bt57100\Documents\Visual Studio 2015\Projects\MyAirport.Pim\Models.AbstractDefinition\bin\Release\Models.AbstractDefinition.pdb
+C:\Users\bt57100\Documents\Visual Studio 2015\Projects\MyAirport.Pim\Models.AbstractDefinition\bin\Release\Entities.dll
+C:\Users\bt57100\Documents\Visual Studio 2015\Projects\MyAirport.Pim\Models.AbstractDefinition\bin\Release\Entities.pdb
+C:\Users\bt57100\Documents\Visual Studio 2015\Projects\MyAirport.Pim\Models.AbstractDefinition\obj\Release\Models.AbstractDefinition.csprojResolveAssemblyReference.cache
+C:\Users\bt57100\Documents\Visual Studio 2015\Projects\MyAirport.Pim\Models.AbstractDefinition\obj\Release\Models.AbstractDefinition.dll
+C:\Users\bt57100\Documents\Visual Studio 2015\Projects\MyAirport.Pim\Models.AbstractDefinition\obj\Release\Models.AbstractDefinition.pdb

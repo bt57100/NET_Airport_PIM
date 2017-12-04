@@ -1,0 +1,11 @@
+C:\Users\bt57100\Documents\Visual Studio 2015\Projects\MyAirport.Pim\Client.BagageForm\obj\Debug\Client.BagageForm.csprojResolveAssemblyReference.cache
+C:\Users\bt57100\Documents\Visual Studio 2015\Projects\MyAirport.Pim\Client.BagageForm\obj\Debug\Client.FormIhm.BagageForm.resources
+C:\Users\bt57100\Documents\Visual Studio 2015\Projects\MyAirport.Pim\Client.BagageForm\obj\Debug\Client.BagageForm.Properties.Resources.resources
+C:\Users\bt57100\Documents\Visual Studio 2015\Projects\MyAirport.Pim\Client.BagageForm\obj\Debug\Client.BagageForm.csproj.GenerateResource.Cache
+C:\Users\bt57100\Documents\Visual Studio 2015\Projects\MyAirport.Pim\Client.BagageForm\bin\Debug\Client.BagageForm.exe.config
+C:\Users\bt57100\Documents\Visual Studio 2015\Projects\MyAirport.Pim\Client.BagageForm\bin\Debug\Client.BagageForm.exe
+C:\Users\bt57100\Documents\Visual Studio 2015\Projects\MyAirport.Pim\Client.BagageForm\bin\Debug\Client.BagageForm.pdb
+C:\Users\bt57100\Documents\Visual Studio 2015\Projects\MyAirport.Pim\Client.BagageForm\bin\Debug\Entities.dll
+C:\Users\bt57100\Documents\Visual Studio 2015\Projects\MyAirport.Pim\Client.BagageForm\bin\Debug\Entities.pdb
+C:\Users\bt57100\Documents\Visual Studio 2015\Projects\MyAirport.Pim\Client.BagageForm\obj\Debug\Client.BagageForm.exe
+C:\Users\bt57100\Documents\Visual Studio 2015\Projects\MyAirport.Pim\Client.BagageForm\obj\Debug\Client.BagageForm.pdb

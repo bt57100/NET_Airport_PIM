@@ -1,0 +1,10 @@
+C:\Users\bt57100\Documents\Visual Studio 2015\Projects\MyAirport.Pim\Client.FormIhm\bin\Debug\Client.FormIhm.exe.config
+C:\Users\bt57100\Documents\Visual Studio 2015\Projects\MyAirport.Pim\Client.FormIhm\bin\Debug\Client.FormIhm.exe
+C:\Users\bt57100\Documents\Visual Studio 2015\Projects\MyAirport.Pim\Client.FormIhm\bin\Debug\Client.FormIhm.pdb
+C:\Users\bt57100\Documents\Visual Studio 2015\Projects\MyAirport.Pim\Client.FormIhm\obj\Debug\Client.FormIhm.csprojResolveAssemblyReference.cache
+C:\Users\bt57100\Documents\Visual Studio 2015\Projects\MyAirport.Pim\Client.FormIhm\obj\Debug\Client.FormIhm.Properties.Resources.resources
+C:\Users\bt57100\Documents\Visual Studio 2015\Projects\MyAirport.Pim\Client.FormIhm\obj\Debug\Client.FormIhm.csproj.GenerateResource.Cache
+C:\Users\bt57100\Documents\Visual Studio 2015\Projects\MyAirport.Pim\Client.FormIhm\obj\Debug\Client.FormIhm.exe
+C:\Users\bt57100\Documents\Visual Studio 2015\Projects\MyAirport.Pim\Client.FormIhm\obj\Debug\Client.FormIhm.pdb
+C:\Users\bt57100\Documents\Visual Studio 2015\Projects\MyAirport.Pim\Client.FormIhm\obj\Debug\Client.FormIhm.BagageSelectForm.resources
+C:\Users\bt57100\Documents\Visual Studio 2015\Projects\MyAirport.Pim\Client.FormIhm\obj\Debug\Client.FormIhm.Pim.resources
