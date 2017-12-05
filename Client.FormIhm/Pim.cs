@@ -260,18 +260,18 @@ namespace Client.FormIhm
             
             try
             {
+                this.label12.Text = "Message: ";
                 proxy.CreateBagage(bagage);
+                State = PimState.CreateBagage;
             }
             catch (AggregateException excp)
             {
                 this.label12.Text += "Une erreur de communication s'est produite dans le traitement de votre demande";
-                this.label12.Text += excp.Message;
                 this.label12.Visible = true;
             }
             catch (Exception excp)
             {
                 this.label12.Text += "Une erreur s'est produite dans le traitement de votre demande";
-                this.label12.Text += excp.Message;
                 this.label12.Visible = true;
             }
         }

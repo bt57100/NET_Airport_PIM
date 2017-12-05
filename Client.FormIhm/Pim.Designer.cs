@@ -70,10 +70,8 @@ namespace Client.FormIhm
             this.destinationSave = new System.Windows.Forms.TextBox();
             this.codeIataLabel = new System.Windows.Forms.Label();
             this.rushSave = new System.Windows.Forms.CheckBox();
-            this.classSave = new System.Windows.Forms.TextBox();
             this.continueSave = new System.Windows.Forms.CheckBox();
             this.codeIataSave = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
             this.lineSave = new System.Windows.Forms.TextBox();
@@ -433,10 +431,8 @@ namespace Client.FormIhm
             this.groupBox6.Controls.Add(this.destinationSave);
             this.groupBox6.Controls.Add(this.codeIataLabel);
             this.groupBox6.Controls.Add(this.rushSave);
-            this.groupBox6.Controls.Add(this.classSave);
             this.groupBox6.Controls.Add(this.continueSave);
             this.groupBox6.Controls.Add(this.codeIataSave);
-            this.groupBox6.Controls.Add(this.label3);
             this.groupBox6.Dock = System.Windows.Forms.DockStyle.Right;
             this.groupBox6.Location = new System.Drawing.Point(297, 16);
             this.groupBox6.Name = "groupBox6";
@@ -448,7 +444,7 @@ namespace Client.FormIhm
             // prioritySave
             // 
             this.prioritySave.AutoSize = true;
-            this.prioritySave.Location = new System.Drawing.Point(114, 165);
+            this.prioritySave.Location = new System.Drawing.Point(114, 160);
             this.prioritySave.Name = "prioritySave";
             this.prioritySave.Size = new System.Drawing.Size(69, 17);
             this.prioritySave.TabIndex = 21;
@@ -483,24 +479,17 @@ namespace Client.FormIhm
             // rushSave
             // 
             this.rushSave.AutoSize = true;
-            this.rushSave.Location = new System.Drawing.Point(114, 142);
+            this.rushSave.Location = new System.Drawing.Point(114, 127);
             this.rushSave.Name = "rushSave";
             this.rushSave.Size = new System.Drawing.Size(51, 17);
             this.rushSave.TabIndex = 20;
             this.rushSave.Text = "Rush";
             this.rushSave.UseVisualStyleBackColor = true;
             // 
-            // classSave
-            // 
-            this.classSave.Location = new System.Drawing.Point(114, 91);
-            this.classSave.Name = "classSave";
-            this.classSave.Size = new System.Drawing.Size(118, 20);
-            this.classSave.TabIndex = 18;
-            // 
             // continueSave
             // 
             this.continueSave.AutoSize = true;
-            this.continueSave.Location = new System.Drawing.Point(114, 119);
+            this.continueSave.Location = new System.Drawing.Point(114, 95);
             this.continueSave.Name = "continueSave";
             this.continueSave.Size = new System.Drawing.Size(85, 17);
             this.continueSave.TabIndex = 19;
@@ -513,15 +502,6 @@ namespace Client.FormIhm
             this.codeIataSave.Name = "codeIataSave";
             this.codeIataSave.Size = new System.Drawing.Size(118, 20);
             this.codeIataSave.TabIndex = 16;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 94);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(83, 13);
-            this.label3.TabIndex = 17;
-            this.label3.Text = "Classe bagage :";
             // 
             // groupBox7
             // 
@@ -671,9 +651,7 @@ namespace Client.FormIhm
         private GroupBox groupBox5;
         private GroupBox groupBox6;
         private CheckBox rushSave;
-        private TextBox classSave;
         private CheckBox continueSave;
-        private Label label3;
         private GroupBox groupBox7;
         private Label label4;
         private TextBox lineSave;
