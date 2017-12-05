@@ -13,7 +13,7 @@ namespace MyAirport.Pim.Models
 
         static string BY_ID = GET_BAGAGE + "WHERE b.ID_BAGAGE=@id_bagage";
 
-        static string GET_BAGAGE = "SELECT b.ID_BAGAGE, b.CODE_IATA, co.NOM AS 'COMPAGNIE', b.LIGNE, b.DATE_CREATION,b.PRIORITAIRE, b.DESTINATION, b.EN_CONTINUATION, cast(iif(bp.PARTICULARITE is null, 0, 1) as bit) as 'RUSH'"
+        static string GET_BAGAGE = "SELECT b.ID_BAGAGE, b.CODE_IATA, co.NOM AS 'COMPAGNIE', b.LIGNE, b.DATE_CREATION ,b.PRIORITAIRE, b.DESTINATION, b.EN_CONTINUATION, cast(iif(bp.PARTICULARITE is null, 0, 1) as bit) as 'RUSH'"
             + " FROM BAGAGE b"
             + " LEFT JOIN BAGAGE_A_POUR_PARTICULARITE bap ON bap.ID_BAGAGE=b.ID_BAGAGE"
             + " LEFT JOIN BAGAGE_PARTICULARITE bp ON bp.ID_PART=bap.ID_PARTICULARITE"
@@ -22,10 +22,13 @@ namespace MyAirport.Pim.Models
         static string UPDATE_BAGAGE = "UPDATE BAGAGE b "
             + " SET b.ID_VOL = @ID_VOL, b.CODE_IATA = @CODE_IATA, b.ORIGINE_CREATION = @ORIGINE_CREATION, b.DATE_CREATION = @DATE_CREATION, b.CLASSE = @CLASSE, b.PRIORITAIRE = @PRIORITAIRE, b.STA = '', b.LOCAL_TRANFERT = @LOCAL_TRANFERT, b.NSUR = @NSUR, b.SSUR = @SSUR, b.ISUR = @ISUR, b.TSUR = @TSUR, b.GSUR = @GSUR, b.CSUR = @CSUR, b.DESTINATION = @DESTINATION, b.ESCALE = @ESCALE, b.EMB = @EMB, b.RECOLE = @RECOLE, b.COMPAGNIE = @COMPAGNIE, b.LIGNE = @LIGNE, b.JOUR_EXPLOITATION = @JOUR_EXPLOITATION, b.CONTINUATION = @CONTINUATION, b.STATUT_EJECTION = @STATUT_EJECTION, b.STATUT_TEMPOREL = @STATUT_TEMPOREL, b.DCS_EMETTEUR = @DCS_EMETTEUR, b.ORIGINE_SAFIR = @ORIGINE_SAFIR, b.EN_CONTINUATION = @EN_CONTINUATION, b.EN_TRANSFERT = @EN_TRANSFERT";
 
-        static string INSERT_BAGAGE = "INSERT INTO BAGAGE (CODE_IATA, DATE_CREATION, PRIORITAIRE, DESTINATION, COMPAGNIE, LIGNE, EN_CONTINUATION, PARTICULARITE)"
-            + " VALUES (@CODE_IATA, @DATE_CREATION, @PRIORITAIRE, @DESTINATION, @COMPAGNIE, @LIGNE, @EN_CONTINUATION, @PARTICULARITE);";
+        static string INSERT_BAGAGE = "INSERT INTO BAGAGE ('CODE_IATA', 'DATE_CREATION', 'PRIORITAIRE', 'DESTINATION', 'COMPAGNIE', 'LIGNE', 'EN_CONTINUATION')"
+            + " VALUES (@CODE_IATA, SYSDATETIME(), @PRIORITAIRE, @DESTINATION, @COMPAGNIE, @LIGNE, @EN_CONTINUATION);";
 
-        static string getInsert = "SELECT SCOPE_IDENTITY()";
+        static string INSERT_PARTICULARITE = "INSERT INTO BAGAGE_A_POUR_PARTICULARITE ('ID_BAGAGE', 'ID_PARTICULARITE')"
+            + " VALUES (@ID_BAGAGE, 1)";
+
+        static string GET_INSERT = "SELECT SCOPE_IDENTITY()";
 
         public override List<BagageDefinition> GetBagage(string codeIataBagage)
         {
@@ -62,20 +65,23 @@ namespace MyAirport.Pim.Models
             int id = 0;
             using (SqlConnection cnx = new SqlConnection(strCnx))
             {
-                SqlCommand cmd = new SqlCommand(INSERT_BAGAGE, cnx); 
+                SqlCommand cmd = new SqlCommand(INSERT_BAGAGE + GET_INSERT, cnx); 
                 cmd.Parameters.AddWithValue("@CODE_IATA", bagage.CodeIata);
+                cmd.Parameters.AddWithValue("@EN_CONTINUATION", bagage.EnContinuation);
                 cmd.Parameters.AddWithValue("@COMPAGNIE", bagage.Compagnie);
                 cmd.Parameters.AddWithValue("@LIGNE", bagage.Ligne);
-                cmd.Parameters.AddWithValue("@DATE_CREATION", bagage.DateVol);
                 cmd.Parameters.AddWithValue("@DESTINATION", bagage.Itineraire);
                 cmd.Parameters.AddWithValue("@PRIORITAIRE", bagage.Prioritaire);
-                cmd.Parameters.AddWithValue("@CONTINUATION", bagage.EnContinuation);
-                cmd.Parameters.AddWithValue("@PARTICULARITE", bagage.Rush);
                 cnx.Open();
                 id = Convert.ToInt32(cmd.ExecuteScalar());
+                if(bagage.Rush == true)
+                {
+                    SqlCommand cmd2 = new SqlCommand(INSERT_PARTICULARITE, cnx);
+                    cmd2.Parameters.AddWithValue("@ID_BAGAGE", id);
+                    cmd2.ExecuteScalar();
+                }
             }
             return id;
-
         }
 
         private List<BagageDefinition> executeQuery(SqlCommand cmd)

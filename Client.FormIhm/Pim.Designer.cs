@@ -65,25 +65,23 @@ namespace Client.FormIhm
             this.saveNewButton = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.prioritySave = new System.Windows.Forms.CheckBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.destinationSave = new System.Windows.Forms.TextBox();
+            this.codeIataLabel = new System.Windows.Forms.Label();
             this.rushSave = new System.Windows.Forms.CheckBox();
             this.classSave = new System.Windows.Forms.TextBox();
             this.continueSave = new System.Windows.Forms.CheckBox();
+            this.codeIataSave = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.daySave = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.lineSave = new System.Windows.Forms.TextBox();
             this.companySave = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label14 = new System.Windows.Forms.Label();
-            this.destinationSave = new System.Windows.Forms.TextBox();
-            this.codeIataLabel = new System.Windows.Forms.Label();
-            this.codeIataSave = new System.Windows.Forms.TextBox();
-            this.prioritySave = new System.Windows.Forms.CheckBox();
             this.Commandes.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -447,6 +445,41 @@ namespace Client.FormIhm
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Bagage";
             // 
+            // prioritySave
+            // 
+            this.prioritySave.AutoSize = true;
+            this.prioritySave.Location = new System.Drawing.Point(114, 165);
+            this.prioritySave.Name = "prioritySave";
+            this.prioritySave.Size = new System.Drawing.Size(69, 17);
+            this.prioritySave.TabIndex = 21;
+            this.prioritySave.Text = "Prioritaire";
+            this.prioritySave.UseVisualStyleBackColor = true;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(6, 59);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(53, 13);
+            this.label14.TabIndex = 21;
+            this.label14.Text = "Itinéraire :";
+            // 
+            // destinationSave
+            // 
+            this.destinationSave.Location = new System.Drawing.Point(114, 59);
+            this.destinationSave.Name = "destinationSave";
+            this.destinationSave.Size = new System.Drawing.Size(118, 20);
+            this.destinationSave.TabIndex = 17;
+            // 
+            // codeIataLabel
+            // 
+            this.codeIataLabel.AutoSize = true;
+            this.codeIataLabel.Location = new System.Drawing.Point(6, 24);
+            this.codeIataLabel.Name = "codeIataLabel";
+            this.codeIataLabel.Size = new System.Drawing.Size(96, 13);
+            this.codeIataLabel.TabIndex = 14;
+            this.codeIataLabel.Text = "Code Iata complet:";
+            // 
             // rushSave
             // 
             this.rushSave.AutoSize = true;
@@ -474,6 +507,13 @@ namespace Client.FormIhm
             this.continueSave.Text = "Continuation";
             this.continueSave.UseVisualStyleBackColor = true;
             // 
+            // codeIataSave
+            // 
+            this.codeIataSave.Location = new System.Drawing.Point(114, 24);
+            this.codeIataSave.Name = "codeIataSave";
+            this.codeIataSave.Size = new System.Drawing.Size(118, 20);
+            this.codeIataSave.TabIndex = 16;
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -485,9 +525,7 @@ namespace Client.FormIhm
             // 
             // groupBox7
             // 
-            this.groupBox7.Controls.Add(this.daySave);
             this.groupBox7.Controls.Add(this.label4);
-            this.groupBox7.Controls.Add(this.label5);
             this.groupBox7.Controls.Add(this.lineSave);
             this.groupBox7.Controls.Add(this.companySave);
             this.groupBox7.Controls.Add(this.label11);
@@ -499,32 +537,14 @@ namespace Client.FormIhm
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Vol";
             // 
-            // daySave
-            // 
-            this.daySave.Location = new System.Drawing.Point(114, 94);
-            this.daySave.Name = "daySave";
-            this.daySave.Size = new System.Drawing.Size(118, 20);
-            this.daySave.TabIndex = 12;
-            this.daySave.Text = "dd/MM/yyyy";
-            this.daySave.TextChanged += new System.EventHandler(this.daySave_TextChanged);
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(14, 24);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(66, 13);
+            this.label4.Size = new System.Drawing.Size(114, 13);
             this.label4.TabIndex = 7;
-            this.label4.Text = "Compagnie :";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(14, 97);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(97, 13);
-            this.label5.TabIndex = 11;
-            this.label5.Text = "Jour d\'exploitation :";
+            this.label4.Text = "Code Iata compagnie :";
             // 
             // lineSave
             // 
@@ -535,9 +555,9 @@ namespace Client.FormIhm
             // 
             // companySave
             // 
-            this.companySave.Location = new System.Drawing.Point(114, 21);
+            this.companySave.Location = new System.Drawing.Point(134, 21);
             this.companySave.Name = "companySave";
-            this.companySave.Size = new System.Drawing.Size(118, 20);
+            this.companySave.Size = new System.Drawing.Size(98, 20);
             this.companySave.TabIndex = 8;
             // 
             // label11
@@ -581,48 +601,6 @@ namespace Client.FormIhm
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(568, 17);
             this.panel1.TabIndex = 12;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(6, 59);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(53, 13);
-            this.label14.TabIndex = 21;
-            this.label14.Text = "Itinéraire :";
-            // 
-            // destinationSave
-            // 
-            this.destinationSave.Location = new System.Drawing.Point(114, 59);
-            this.destinationSave.Name = "destinationSave";
-            this.destinationSave.Size = new System.Drawing.Size(118, 20);
-            this.destinationSave.TabIndex = 22;
-            // 
-            // codeIataLabel
-            // 
-            this.codeIataLabel.AutoSize = true;
-            this.codeIataLabel.Location = new System.Drawing.Point(6, 24);
-            this.codeIataLabel.Name = "codeIataLabel";
-            this.codeIataLabel.Size = new System.Drawing.Size(59, 13);
-            this.codeIataLabel.TabIndex = 14;
-            this.codeIataLabel.Text = "Code Iata :";
-            // 
-            // codeIataSave
-            // 
-            this.codeIataSave.Location = new System.Drawing.Point(114, 24);
-            this.codeIataSave.Name = "codeIataSave";
-            this.codeIataSave.Size = new System.Drawing.Size(118, 20);
-            this.codeIataSave.TabIndex = 16;
-            // 
-            // prioritySave
-            // 
-            this.prioritySave.AutoSize = true;
-            this.prioritySave.Location = new System.Drawing.Point(114, 165);
-            this.prioritySave.Name = "prioritySave";
-            this.prioritySave.Size = new System.Drawing.Size(69, 17);
-            this.prioritySave.TabIndex = 23;
-            this.prioritySave.Text = "Prioritaire";
-            this.prioritySave.UseVisualStyleBackColor = true;
             // 
             // Pim
             // 
@@ -697,9 +675,7 @@ namespace Client.FormIhm
         private CheckBox continueSave;
         private Label label3;
         private GroupBox groupBox7;
-        private TextBox daySave;
         private Label label4;
-        private Label label5;
         private TextBox lineSave;
         private TextBox companySave;
         private Label label11;

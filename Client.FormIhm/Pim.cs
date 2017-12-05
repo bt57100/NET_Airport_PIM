@@ -252,7 +252,6 @@ namespace Client.FormIhm
             BagageDefinition bagage = new BagageDefinition();
             bagage.CodeIata = codeIataSave.Text;
             bagage.Compagnie = companySave.Text;
-            bagage.DateVol = DateTime.ParseExact(daySave.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
             bagage.EnContinuation = continueSave.Checked;
             bagage.Itineraire = destinationSave.Text;
             bagage.Ligne = lineSave.Text;
@@ -265,7 +264,7 @@ namespace Client.FormIhm
             }
             catch (AggregateException excp)
             {
-                this.label12.Text += "Une erreur de communication c'est produite dans le traitement de votre demande";
+                this.label12.Text += "Une erreur de communication s'est produite dans le traitement de votre demande";
                 this.label12.Text += excp.Message;
                 this.label12.Visible = true;
             }
@@ -276,10 +275,6 @@ namespace Client.FormIhm
                 this.label12.Visible = true;
             }
         }
-
-        private void daySave_TextChanged(object sender, EventArgs e)
-        {
-            daySave.Text = "";
-        }
+        
     }
 }

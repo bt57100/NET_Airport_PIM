@@ -13,6 +13,8 @@ namespace ServicePim
 
         public int CreateBagage(BagageDefinition bag)
         {
+            NbAppelTotale++;
+            this.NbAppelInstance++;
             return MyAirport.Pim.Models.Factory.Model.InsertBagage(bag);
         }
         
@@ -47,6 +49,8 @@ namespace ServicePim
 
         public BagageDefinition GetBagageById(int idBagage)
         {
+            NbAppelTotale++;
+            this.NbAppelInstance++;
             return MyAirport.Pim.Models.Factory.Model.GetBagage(idBagage);
         }
     }
