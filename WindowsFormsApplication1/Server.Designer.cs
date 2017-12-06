@@ -49,6 +49,7 @@
             // 
             // buttonOpen
             // 
+            this.buttonOpen.Enabled = false;
             this.buttonOpen.Location = new System.Drawing.Point(179, 67);
             this.buttonOpen.Name = "buttonOpen";
             this.buttonOpen.Size = new System.Drawing.Size(75, 23);

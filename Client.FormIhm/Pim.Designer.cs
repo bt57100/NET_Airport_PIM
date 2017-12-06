@@ -465,6 +465,7 @@ namespace Client.FormIhm
             // destinationSave
             // 
             this.destinationSave.Location = new System.Drawing.Point(114, 59);
+            this.destinationSave.MaxLength = 3;
             this.destinationSave.Name = "destinationSave";
             this.destinationSave.Size = new System.Drawing.Size(118, 20);
             this.destinationSave.TabIndex = 17;
@@ -501,6 +502,7 @@ namespace Client.FormIhm
             // codeIataSave
             // 
             this.codeIataSave.Location = new System.Drawing.Point(114, 24);
+            this.codeIataSave.MaxLength = 12;
             this.codeIataSave.Name = "codeIataSave";
             this.codeIataSave.Size = new System.Drawing.Size(118, 20);
             this.codeIataSave.TabIndex = 16;
@@ -531,6 +533,7 @@ namespace Client.FormIhm
             // lineSave
             // 
             this.lineSave.Location = new System.Drawing.Point(114, 59);
+            this.lineSave.MaxLength = 5;
             this.lineSave.Name = "lineSave";
             this.lineSave.Size = new System.Drawing.Size(118, 20);
             this.lineSave.TabIndex = 10;
@@ -538,6 +541,7 @@ namespace Client.FormIhm
             // companySave
             // 
             this.companySave.Location = new System.Drawing.Point(134, 21);
+            this.companySave.MaxLength = 3;
             this.companySave.Name = "companySave";
             this.companySave.Size = new System.Drawing.Size(98, 20);
             this.companySave.TabIndex = 8;

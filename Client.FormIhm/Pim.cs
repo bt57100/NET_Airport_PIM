@@ -1,7 +1,6 @@
 ﻿using Client.FormIhm.ServiceReferencePim;
 using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.ServiceModel;
 using System.Windows.Forms;
 
@@ -267,8 +266,14 @@ namespace Client.FormIhm
             try
             {
                 this.label12.Text = "Message: ";
-                proxy.CreateBagage(bagage);
+                bagage.IdBagage = proxy.CreateBagage(bagage);
                 State = PimState.CreateBagage;
+                MessageBox.Show("Bagage saved ! id=" + bagage.IdBagage);
+            }
+            catch(FaultException excp)
+            {
+                this.label12.Text += excp.Message;
+                this.label12.Visible = true;
             }
             catch (AggregateException excp)
             {

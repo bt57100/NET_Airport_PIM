@@ -13,9 +13,15 @@ namespace ServicePim
 
         public int CreateBagage(BagageDefinition bag)
         {
+            int id = 0;
             NbAppelTotale++;
             this.NbAppelInstance++;
-            return MyAirport.Pim.Models.Factory.Model.InsertBagage(bag);
+            id = MyAirport.Pim.Models.Factory.Model.InsertBagage(bag);
+            if(id == 0)
+            {
+                throw new FaultException("This company code iata does not exist !");
+            }
+            return id;
         }
         
         public BagageDefinition GetBagageByCodeIata(string codeIata)

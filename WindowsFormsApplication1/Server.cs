@@ -21,6 +21,8 @@ namespace WindowsFormsApplication1
             host.Faulted += host_State;
             host.Opened += host_State;
             host.Opening += host_State;
+            this.buttonOpen.Enabled = true;
+            this.buttonCreate.Enabled = false;
             this.textBoxState.Text = "Created";
         }
 

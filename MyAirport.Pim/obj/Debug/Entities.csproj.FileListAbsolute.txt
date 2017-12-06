@@ -1,4 +1,0 @@
-C:\Users\bt57100\Documents\Visual Studio 2015\Projects\MyAirport.Pim\MyAirport.Pim\bin\Debug\Entities.dll
-C:\Users\bt57100\Documents\Visual Studio 2015\Projects\MyAirport.Pim\MyAirport.Pim\bin\Debug\Entities.pdb
-C:\Users\bt57100\Documents\Visual Studio 2015\Projects\MyAirport.Pim\MyAirport.Pim\obj\Debug\Entities.dll
-C:\Users\bt57100\Documents\Visual Studio 2015\Projects\MyAirport.Pim\MyAirport.Pim\obj\Debug\Entities.pdb
