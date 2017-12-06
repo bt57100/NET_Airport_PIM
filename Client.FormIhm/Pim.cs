@@ -130,13 +130,11 @@ namespace Client.FormIhm
             catch (AggregateException excp)
             {
                 this.label12.Text += "Une erreur de communication c'est produite dans le traitement de votre demande";
-                this.label12.Text += excp.Message;
                 this.label12.Visible = true;
             }
             catch (Exception excp)
             {
                 this.label12.Text += "Une erreur s'est produite dans le traitement de votre demande";
-                this.label12.Text += excp.Message;
                 this.label12.Visible = true;
             }
 
@@ -173,23 +171,26 @@ namespace Client.FormIhm
                     this.selectedBagage = bagageSelectForm.BagageSelected;
                     State = PimState.DisplayBagage;
                 }
+                else if(result == DialogResult.Cancel)
+                {
+                    this.selectedBagage = null;
+                    clearSearch();
+                    State = PimState.Disconnect;
+                }
             }
             catch (FaultException excp)
             {
                 this.label12.Text += "Une erreur s'est produite dans le traitement de plusieurs bagages";
-                this.label12.Text += excp.Message;
                 this.label12.Visible = true;
             }
             catch (AggregateException excp)
             {
                 this.label12.Text += "Une erreur de communication c'est produite dans le traitement de votre demande";
-                this.label12.Text += excp.Message;
                 this.label12.Visible = true;
             }
             catch (Exception excp)
             {
                 this.label12.Text += "Une erreur s'est produite dans le traitement de votre demande";
-                this.label12.Text += excp.Message;
                 this.label12.Visible = true;
             }
 
@@ -208,6 +209,11 @@ namespace Client.FormIhm
         }
 
         private void clearButton_Click(object sender, EventArgs e)
+        {
+            clearSearch();
+        }
+
+        private void clearSearch()
         {
             bagageIdTextBox.Text = "";
             companyTextBox.Text = "";
@@ -275,6 +281,21 @@ namespace Client.FormIhm
                 this.label12.Visible = true;
             }
         }
-        
+
+        private void saveButton_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Not implemented yet");
+        }
+
+        private void resetSave_Click(object sender, EventArgs e)
+        {
+            companySave.Text = "";
+            lineSave.Text = "";
+            codeIataSave.Text = "";
+            destinationSave.Text = "";
+            continueSave.Checked = false;
+            rushSave.Checked = false;
+            prioritySave.Checked = false;
+        }
     }
 }

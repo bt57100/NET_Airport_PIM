@@ -14,12 +14,14 @@ namespace Client.FormIhm
         {
             InitializeComponent();
             okButton.Click += new EventHandler(this.okButton_Click);
+            cancelButton.Click += new EventHandler(this.cancelButton_Click);
         }
 
         public void refresh()
         {
             bagageList.Items.Clear();
-            foreach(BagageDefinition bagage in Bagages)
+            bagageList.Items.Add("IdBagage      CodeIata               Compagnie            Ligne           Date de Vol       Itineraire Prioritaire EnContinuation Rush");
+            foreach (BagageDefinition bagage in Bagages)
             {
                 bagageList.Items.Add(bagage);
             }

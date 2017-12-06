@@ -82,6 +82,7 @@
             // 
             // textBoxState
             // 
+            this.textBoxState.Enabled = false;
             this.textBoxState.Location = new System.Drawing.Point(75, 25);
             this.textBoxState.Name = "textBoxState";
             this.textBoxState.Size = new System.Drawing.Size(144, 20);
@@ -90,6 +91,7 @@
             // listBox1
             // 
             this.listBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.listBox1.Enabled = false;
             this.listBox1.FormattingEnabled = true;
             this.listBox1.Location = new System.Drawing.Point(0, 118);
             this.listBox1.Name = "listBox1";

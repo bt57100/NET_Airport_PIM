@@ -61,7 +61,7 @@ namespace Client.FormIhm
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
+            this.resetSave = new System.Windows.Forms.Button();
             this.saveNewButton = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
@@ -129,6 +129,7 @@ namespace Client.FormIhm
             this.saveButton.TabIndex = 21;
             this.saveButton.Text = "Sauvegarder";
             this.saveButton.UseVisualStyleBackColor = true;
+            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
             // groupBox1
             // 
@@ -383,7 +384,7 @@ namespace Client.FormIhm
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.button2);
+            this.panel3.Controls.Add(this.resetSave);
             this.panel3.Controls.Add(this.saveNewButton);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel3.Location = new System.Drawing.Point(3, 249);
@@ -391,15 +392,16 @@ namespace Client.FormIhm
             this.panel3.Size = new System.Drawing.Size(554, 22);
             this.panel3.TabIndex = 24;
             // 
-            // button2
+            // resetSave
             // 
-            this.button2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.button2.Location = new System.Drawing.Point(0, 0);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(83, 22);
-            this.button2.TabIndex = 23;
-            this.button2.Text = "Réinitialiser";
-            this.button2.UseVisualStyleBackColor = true;
+            this.resetSave.Dock = System.Windows.Forms.DockStyle.Left;
+            this.resetSave.Location = new System.Drawing.Point(0, 0);
+            this.resetSave.Name = "resetSave";
+            this.resetSave.Size = new System.Drawing.Size(83, 22);
+            this.resetSave.TabIndex = 23;
+            this.resetSave.Text = "Réinitialiser";
+            this.resetSave.UseVisualStyleBackColor = true;
+            this.resetSave.Click += new System.EventHandler(this.resetSave_Click);
             // 
             // saveNewButton
             // 
@@ -657,7 +659,7 @@ namespace Client.FormIhm
         private TextBox lineSave;
         private TextBox companySave;
         private Label label11;
-        private Button button2;
+        private Button resetSave;
         private Button saveNewButton;
         private Label label12;
         private Label label13;

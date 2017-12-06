@@ -26,8 +26,21 @@ namespace Client.FormIhm
 
         private void okButton_Click(object sender, EventArgs e)
         {
-            this.BagageSelected = (BagageDefinition)this.bagageList.SelectedItem;
-            this.DialogResult = DialogResult.OK;
+            try
+            {
+                this.BagageSelected = (BagageDefinition)this.bagageList.SelectedItem;
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
+            catch (InvalidCastException excp)
+            {
+                MessageBox.Show("Erreur de sélection");
+            }
+        }
+        private void cancelButton_Click(object sender, EventArgs e)
+        {
+            this.BagageSelected = null;
+            this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
 
@@ -54,12 +67,12 @@ namespace Client.FormIhm
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(309, 238);
+            this.panel1.Size = new System.Drawing.Size(606, 238);
             this.panel1.TabIndex = 0;
             // 
             // okButton
             // 
-            this.okButton.Location = new System.Drawing.Point(222, 203);
+            this.okButton.Location = new System.Drawing.Point(519, 203);
             this.okButton.Name = "okButton";
             this.okButton.Size = new System.Drawing.Size(75, 23);
             this.okButton.TabIndex = 2;
@@ -68,7 +81,6 @@ namespace Client.FormIhm
             // 
             // cancelButton
             // 
-            this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.cancelButton.Location = new System.Drawing.Point(12, 203);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 23);
@@ -82,14 +94,14 @@ namespace Client.FormIhm
             this.bagageList.FormattingEnabled = true;
             this.bagageList.Location = new System.Drawing.Point(0, 0);
             this.bagageList.Name = "bagageList";
-            this.bagageList.Size = new System.Drawing.Size(309, 186);
+            this.bagageList.Size = new System.Drawing.Size(606, 186);
             this.bagageList.TabIndex = 0;
             // 
             // BagageSelectForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(309, 238);
+            this.ClientSize = new System.Drawing.Size(606, 238);
             this.Controls.Add(this.panel1);
             this.Name = "BagageSelectForm";
             this.Text = "SelectBagage";

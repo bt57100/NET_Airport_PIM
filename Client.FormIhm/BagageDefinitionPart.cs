@@ -6,7 +6,7 @@ namespace Client.FormIhm.ServiceReferencePim
     {
         public override String ToString()
         {
-            return IdBagage + "\t" + CodeIata + "\t" + Compagnie;
+            return IdBagage + " " + CodeIata + " " + Compagnie + " " + Ligne + " " + DateVol + "     " + Itineraire + "      " + Prioritaire + "           " + EnContinuation + "           " + Rush;
         }
     }
 }
