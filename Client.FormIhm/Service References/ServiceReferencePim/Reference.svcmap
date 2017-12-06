@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="f89f257b-5a7c-4b73-8736-1719142fdcef" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="51d7278f-c081-45de-996f-cfb2cd3b1fe4" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -22,10 +22,10 @@
     <MetadataSource Address="http://localhost:8733/Design_Time_Addresses/ServicePim/Service1/mex" Protocol="mex" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="68a528c6-1864-4500-849f-ae63ef1fc5bb" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/ServicePim/Service1/mex" />
-    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="edc61676-aacf-4027-b5bf-651b5515d382" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/ServicePim/Service1/mex" />
-    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="0ec0f07f-8a4a-4e5a-84b4-31bfd704453e" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/ServicePim/Service1/mex" />
-    <MetadataFile FileName="MyAirport.Pim.Entities.xsd" MetadataType="Schema" ID="ad6bf8cc-5c39-46ab-8022-2b85f5a5a155" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/ServicePim/Service1/mex" />
+    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="140ace30-1620-447c-9e56-e217dd53477c" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/ServicePim/Service1/mex" />
+    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="af81b5ad-b407-45a9-874c-35c31ebbca5a" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/ServicePim/Service1/mex" />
+    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="afb37a42-938d-4a36-9652-7d9254cbd245" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/ServicePim/Service1/mex" />
+    <MetadataFile FileName="MyAirport.Pim.Entities.xsd" MetadataType="Schema" ID="400e736f-6d37-43c9-ab37-a73a1157025a" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/ServicePim/Service1/mex" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

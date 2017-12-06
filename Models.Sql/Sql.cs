@@ -9,9 +9,11 @@ namespace MyAirport.Pim.Models
     {
         string strCnx = ConfigurationManager.ConnectionStrings["MyAiport.Pim.Settings.DbConnect"].ConnectionString;
 
-        static string BY_IATA = " WHERE b.CODE_IATA LIKE @code_iata";
+        static string LIKE_IATA = " WHERE b.CODE_IATA LIKE @code_iata";
 
-        static string BY_ID = " WHERE b.ID_BAGAGE=@id_bagage";
+        static string EXACT_ID = " WHERE b.ID_BAGAGE=@id_bagage";
+
+        static string EXACT_IATA = " WHERE b.CODE_IATA = @code_iata";
 
         static string GET_BAGAGE = "SELECT b.ID_BAGAGE, b.CODE_IATA, co.NOM AS 'COMPAGNIE', b.LIGNE, b.DATE_CREATION ,b.PRIORITAIRE, b.DESTINATION, b.EN_CONTINUATION, cast(iif(bp.PARTICULARITE is null, 0, 1) as bit) as 'RUSH'"
             + " FROM BAGAGE b"
@@ -37,7 +39,7 @@ namespace MyAirport.Pim.Models
             List<BagageDefinition> bagList = new List<BagageDefinition>();
             using (SqlConnection cnx = new SqlConnection(strCnx))
             {
-                SqlCommand cmd = new SqlCommand(GET_BAGAGE + BY_IATA, cnx);
+                SqlCommand cmd = new SqlCommand(GET_BAGAGE + LIKE_IATA, cnx);
                 cmd.Parameters.AddWithValue("@code_iata", "____" + codeIataBagage + "00");
                 cnx.Open();
                 bagList = executeQuery(cmd);
@@ -50,7 +52,7 @@ namespace MyAirport.Pim.Models
             BagageDefinition bag = null;
             using (SqlConnection cnx = new SqlConnection(strCnx))
             {
-                SqlCommand cmd = new SqlCommand(GET_BAGAGE + BY_ID, cnx);
+                SqlCommand cmd = new SqlCommand(GET_BAGAGE + EXACT_ID, cnx);
                 cmd.Parameters.AddWithValue("@id_bagage", idBagage);
                 cnx.Open();
                 List<BagageDefinition> bagList = executeQuery(cmd);
@@ -128,14 +130,11 @@ namespace MyAirport.Pim.Models
         public bool checkCompanyExist(String codeIata)
         {
             bool exist = false;
-
             using (SqlConnection cnx = new SqlConnection(strCnx))
             {
-                String getCompanyByIata = GET_COMPANY + BY_IATA;
-                SqlCommand cmd = new SqlCommand(getCompanyByIata, cnx);
-                cmd.Parameters.AddWithValue("@code_iata", "AA");
+                SqlCommand cmd = new SqlCommand(GET_COMPANY + EXACT_IATA, cnx);
+                cmd.Parameters.AddWithValue("@code_iata", codeIata);
                 cnx.Open();
-
                 using (SqlDataReader dataReader = cmd.ExecuteReader())
                 {
                     if (dataReader.HasRows)
