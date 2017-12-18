@@ -9,19 +9,19 @@ namespace MyAirport.Pim.Models
     {
         private string strCnx = ConfigurationManager.ConnectionStrings["MyAiport.Pim.Settings.DbConnect"].ConnectionString;
 
-        private static string EXACT_ID = " WHERE b.ID_BAGAGE = @ID_BAGAGE";
+        private static string EXACT_ID = " WHERE [BAGAGE].[ID_BAGAGE] = @ID_BAGAGE";
 
-        private static string EXACT_IATA = " WHERE b.CODE_IATA = @CODE_IATA";
+        private static string COMPANGNY_EXACT_ID = " WHERE [COMPAGNIE].[CODE_IATA] = @CODE_IATA";
 
-        private static string LIKE_IATA = " WHERE b.CODE_IATA LIKE @CODE_IATA";
+        private static string LIKE_IATA = " WHERE [BAGAGE].[CODE_IATA] LIKE @CODE_IATA";
 
-        private static string GET_BAGAGE = "SELECT b.ID_BAGAGE, b.CODE_IATA, co.NOM AS 'COMPAGNIE', b.LIGNE, b.DATE_CREATION ,b.PRIORITAIRE, b.DESTINATION, b.EN_CONTINUATION, cast(iif(bp.PARTICULARITE is null, 0, 1) as bit) as 'RUSH'"
-            + " FROM BAGAGE b"
-            + " LEFT JOIN BAGAGE_A_POUR_PARTICULARITE bap ON bap.ID_BAGAGE=b.ID_BAGAGE"
+        private static string GET_BAGAGE = "SELECT [BAGAGE].ID_BAGAGE, [BAGAGE].CODE_IATA, co.NOM AS 'COMPAGNIE', [BAGAGE].LIGNE, [BAGAGE].DATE_CREATION ,[BAGAGE].PRIORITAIRE, [BAGAGE].DESTINATION, [BAGAGE].EN_CONTINUATION, cast(iif(bp.PARTICULARITE is null, 0, 1) as bit) as 'RUSH'"
+            + " FROM BAGAGE "
+            + " LEFT JOIN BAGAGE_A_POUR_PARTICULARITE bap ON bap.ID_BAGAGE=[BAGAGE].ID_BAGAGE"
             + " LEFT JOIN BAGAGE_PARTICULARITE bp ON bp.ID_PART=bap.ID_PARTICULARITE"
-            + " LEFT JOIN COMPAGNIE co ON co.CODE_IATA=b.COMPAGNIE";
+            + " LEFT JOIN COMPAGNIE co ON co.CODE_IATA=[BAGAGE].COMPAGNIE";
 
-        private static string GET_COMPANY = "SELECT b.ID_COMPAGNIE FROM COMPAGNIE b";
+        private static string GET_COMPANY = "SELECT [COMPAGNIE].[ID_COMPAGNIE] FROM COMPAGNIE";
 
         private static string UPDATE_BAGAGE = "UPDATE BAGAGE"
             + " SET [PRIORITAIRE] = @PRIORITAIRE, [DESTINATION] = @DESTINATION, [LIGNE] = @LIGNE, [EN_CONTINUATION] = @EN_CONTINUATION";
@@ -30,7 +30,7 @@ namespace MyAirport.Pim.Models
             + " VALUES (@CODE_IATA, SYSDATETIME(), 2, 'D', @PRIORITAIRE, @DESTINATION, @COMPAGNIE, @LIGNE, @EN_CONTINUATION);";
 
         private static string INSERT_PARTICULARITE = "INSERT INTO BAGAGE_A_POUR_PARTICULARITE ([ID_BAGAGE], [ID_PARTICULARITE])"
-            + " VALUES (@ID_BAGAGE, 1)"
+            + " SELECT @ID_BAGAGE, 1"
             + " WHERE NOT EXISTS ( SELECT * FROM BAGAGE_A_POUR_PARTICULARITE WHERE [ID_BAGAGE] = @ID_BAGAGE);";
 
         private static string DELETE_PARTICULARITE = "DELETE FROM BAGAGE_A_POUR_PARTICULARITE WHERE [ID_BAGAGE]=@ID_BAGAGE";
@@ -108,7 +108,7 @@ namespace MyAirport.Pim.Models
             bool exist = false;
             using (SqlConnection cnx = new SqlConnection(strCnx))
             {
-                SqlCommand cmd = new SqlCommand(GET_COMPANY + EXACT_IATA, cnx);
+                SqlCommand cmd = new SqlCommand(GET_COMPANY + COMPANGNY_EXACT_ID, cnx);
                 cmd.Parameters.AddWithValue("@CODE_IATA", codeIata);
                 cnx.Open();
                 using (SqlDataReader dataReader = cmd.ExecuteReader())

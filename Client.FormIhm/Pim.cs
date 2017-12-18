@@ -301,8 +301,29 @@ namespace Client.FormIhm
             bagage.Itineraire = destinationTextBox.Text;
             bagage.Ligne = lineTextBox.Text;
             bagage.Prioritaire = !classTextBox.Text.Equals("");
-            bagage.Rush = rushSave.Checked;
-            selectedBagage = proxy.UpdateBagage(bagage);
+            bagage.Rush = rushCheckBox.Checked;
+
+            try
+            {
+                selectedBagage = proxy.UpdateBagage(bagage);
+                State = PimState.DisplayBagage;
+                MessageBox.Show("Bagage saved ! id=" + bagage.IdBagage);
+            }
+            catch (FaultException excp)
+            {
+                this.label12.Text += excp.Message;
+                this.label12.Visible = true;
+            }
+            catch (AggregateException)
+            {
+                this.label12.Text += "Une erreur de communication s'est produite dans le traitement de votre demande";
+                this.label12.Visible = true;
+            }
+            catch (Exception)
+            {
+                this.label12.Text += "Une erreur s'est produite dans le traitement de votre demande";
+                this.label12.Visible = true;
+            }
         }
 
         private void resetSave_Click(object sender, EventArgs e)

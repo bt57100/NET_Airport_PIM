@@ -308,7 +308,7 @@ namespace Client.FormIhm
             // lineTextBox
             // 
             this.lineTextBox.Location = new System.Drawing.Point(114, 59);
-            this.lineTextBox.MaxLength = 6;
+            this.lineTextBox.MaxLength = 5;
             this.lineTextBox.Name = "lineTextBox";
             this.lineTextBox.Size = new System.Drawing.Size(118, 20);
             this.lineTextBox.TabIndex = 10;
