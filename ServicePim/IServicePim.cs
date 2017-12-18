@@ -11,6 +11,9 @@ namespace ServicePim
         BagageDefinition GetBagageById(int idBagage);
 
         [OperationContract]
+        BagageDefinition UpdateBagage(BagageDefinition bagage);
+
+        [OperationContract]
         [FaultContract(typeof(MultipleBagageFault))]
         BagageDefinition GetBagageByCodeIata(string codeIata);
 

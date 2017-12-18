@@ -15,6 +15,20 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="UpdateBagage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/MyAirport.Pim.Entities" minOccurs="0" name="bagage" nillable="true" type="q2:BagageDefinition" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateBagageResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/MyAirport.Pim.Entities" minOccurs="0" name="UpdateBagageResult" nillable="true" type="q3:BagageDefinition" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="GetBagageByCodeIata">
     <xs:complexType>
       <xs:sequence>
@@ -25,14 +39,14 @@
   <xs:element name="GetBagageByCodeIataResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/MyAirport.Pim.Entities" minOccurs="0" name="GetBagageByCodeIataResult" nillable="true" type="q2:BagageDefinition" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/MyAirport.Pim.Entities" minOccurs="0" name="GetBagageByCodeIataResult" nillable="true" type="q4:BagageDefinition" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="CreateBagage">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/MyAirport.Pim.Entities" minOccurs="0" name="bag" nillable="true" type="q3:BagageDefinition" />
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/MyAirport.Pim.Entities" minOccurs="0" name="bag" nillable="true" type="q5:BagageDefinition" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

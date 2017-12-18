@@ -97,9 +97,7 @@ namespace Client.FormIhm
             clearButton.Enabled = true;
             bagageIdButton.Enabled = true;
             bagageIataButton.Enabled = true;
-            companyTextBox.Enabled = true;
             lineTextBox.Enabled = true;
-            explotationDayTextBox.Enabled = true;
             destinationTextBox.Enabled = true;
             classTextBox.Enabled = true;
             continuationCheckBox.Enabled = true;
@@ -126,12 +124,12 @@ namespace Client.FormIhm
             {
                 bagage = proxy.GetBagageById(id);
             }
-            catch (AggregateException excp)
+            catch (AggregateException)
             {
                 this.label12.Text += "Une erreur de communication c'est produite dans le traitement de votre demande";
                 this.label12.Visible = true;
             }
-            catch (Exception excp)
+            catch (Exception)
             {
                 this.label12.Text += "Une erreur s'est produite dans le traitement de votre demande";
                 this.label12.Visible = true;
@@ -144,7 +142,7 @@ namespace Client.FormIhm
             }
             else
             {
-                this.label12.Text += "Message : Pas de bagage trouvé pour l'id ";
+                this.label12.Text += " Pas de bagage trouvé pour l'id ";
                 this.label12.Text += bagageIdTextBox.Text;
                 this.label12.Visible = true;
             }
@@ -177,17 +175,17 @@ namespace Client.FormIhm
                     State = PimState.Disconnect;
                 }
             }
-            catch (FaultException excp)
+            catch (FaultException)
             {
                 this.label12.Text += "Une erreur s'est produite dans le traitement de plusieurs bagages";
                 this.label12.Visible = true;
             }
-            catch (AggregateException excp)
+            catch (AggregateException)
             {
                 this.label12.Text += "Une erreur de communication c'est produite dans le traitement de votre demande";
                 this.label12.Visible = true;
             }
-            catch (Exception excp)
+            catch (Exception)
             {
                 this.label12.Text += "Une erreur s'est produite dans le traitement de votre demande";
                 this.label12.Visible = true;
@@ -254,42 +252,57 @@ namespace Client.FormIhm
 
         private void saveNewButton_Click(object sender, EventArgs e)
         {
-            BagageDefinition bagage = new BagageDefinition();
-            bagage.CodeIata = codeIataSave.Text;
-            bagage.Compagnie = companySave.Text;
-            bagage.EnContinuation = continueSave.Checked;
-            bagage.Itineraire = destinationSave.Text;
-            bagage.Ligne = lineSave.Text;
-            bagage.Prioritaire = prioritySave.Checked;
-            bagage.Rush = rushSave.Checked;
-            
-            try
+            String codeIata = codeIataSave.Text;
+            if (codeIata.Length == 12 && codeIata.Substring(codeIata.Length - 2).Equals("00"))
             {
-                this.label12.Text = "Message: ";
-                bagage.IdBagage = proxy.CreateBagage(bagage);
-                State = PimState.CreateBagage;
-                MessageBox.Show("Bagage saved ! id=" + bagage.IdBagage);
+                BagageDefinition bagage = new BagageDefinition();
+                bagage.CodeIata = codeIataSave.Text;
+                bagage.Compagnie = companySave.Text;
+                bagage.EnContinuation = continueSave.Checked;
+                bagage.Itineraire = destinationSave.Text;
+                bagage.Ligne = lineSave.Text;
+                bagage.Prioritaire = prioritySave.Checked;
+                bagage.Rush = rushSave.Checked;
+
+                try
+                {
+                    bagage.IdBagage = proxy.CreateBagage(bagage);
+                    State = PimState.CreateBagage;
+                    MessageBox.Show("Bagage saved ! id=" + bagage.IdBagage);
+                }
+                catch (FaultException excp)
+                {
+                    this.label12.Text += excp.Message;
+                    this.label12.Visible = true;
+                }
+                catch (AggregateException)
+                {
+                    this.label12.Text += "Une erreur de communication s'est produite dans le traitement de votre demande";
+                    this.label12.Visible = true;
+                }
+                catch (Exception)
+                {
+                    this.label12.Text += "Une erreur s'est produite dans le traitement de votre demande";
+                    this.label12.Visible = true;
+                }
             }
-            catch(FaultException excp)
+            else
             {
-                this.label12.Text += excp.Message;
-                this.label12.Visible = true;
-            }
-            catch (AggregateException excp)
-            {
-                this.label12.Text += "Une erreur de communication s'est produite dans le traitement de votre demande";
-                this.label12.Visible = true;
-            }
-            catch (Exception excp)
-            {
-                this.label12.Text += "Une erreur s'est produite dans le traitement de votre demande";
-                this.label12.Visible = true;
+                label12.Text = "Message : Le code iata ne correspond pas au bon format 12 caractères finissant par 00";
             }
         }
 
         private void saveButton_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Not implemented yet");
+            BagageDefinition bagage = new BagageDefinition();
+            bagage.IdBagage = selectedBagage.IdBagage;
+            bagage.CodeIata = selectedBagage.CodeIata;
+            bagage.EnContinuation = continuationCheckBox.Checked;
+            bagage.Itineraire = destinationTextBox.Text;
+            bagage.Ligne = lineTextBox.Text;
+            bagage.Prioritaire = !classTextBox.Text.Equals("");
+            bagage.Rush = rushSave.Checked;
+            selectedBagage = proxy.UpdateBagage(bagage);
         }
 
         private void resetSave_Click(object sender, EventArgs e)

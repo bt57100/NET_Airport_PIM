@@ -248,6 +248,7 @@ namespace Client.FormIhm
             // destinationTextBox
             // 
             this.destinationTextBox.Location = new System.Drawing.Point(114, 28);
+            this.destinationTextBox.MaxLength = 3;
             this.destinationTextBox.Name = "destinationTextBox";
             this.destinationTextBox.Size = new System.Drawing.Size(118, 20);
             this.destinationTextBox.TabIndex = 16;
@@ -280,6 +281,7 @@ namespace Client.FormIhm
             // 
             // explotationDayTextBox
             // 
+            this.explotationDayTextBox.Enabled = false;
             this.explotationDayTextBox.Location = new System.Drawing.Point(114, 94);
             this.explotationDayTextBox.Name = "explotationDayTextBox";
             this.explotationDayTextBox.Size = new System.Drawing.Size(118, 20);
@@ -306,12 +308,14 @@ namespace Client.FormIhm
             // lineTextBox
             // 
             this.lineTextBox.Location = new System.Drawing.Point(114, 59);
+            this.lineTextBox.MaxLength = 6;
             this.lineTextBox.Name = "lineTextBox";
             this.lineTextBox.Size = new System.Drawing.Size(118, 20);
             this.lineTextBox.TabIndex = 10;
             // 
             // companyTextBox
             // 
+            this.companyTextBox.Enabled = false;
             this.companyTextBox.Location = new System.Drawing.Point(114, 21);
             this.companyTextBox.Name = "companyTextBox";
             this.companyTextBox.Size = new System.Drawing.Size(118, 20);

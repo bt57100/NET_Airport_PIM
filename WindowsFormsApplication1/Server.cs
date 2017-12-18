@@ -29,6 +29,11 @@ namespace WindowsFormsApplication1
         private void host_State(object sender, EventArgs e)
         {
             this.textBoxState.Text = this.host.State.ToString();
+            if(this.host.State.ToString().Equals("Faulted"))
+            {
+                this.buttonOpen.Enabled = false;
+                this.buttonCreate.Enabled = true;
+            }
         }
 
 

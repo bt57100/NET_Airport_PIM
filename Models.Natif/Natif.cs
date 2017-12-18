@@ -26,7 +26,7 @@ namespace MyAirport.Pim.Models
             return 0;
         }
 
-        public override BagageDefinition UpdateBagage(int idBagage)
+        public override BagageDefinition UpdateBagage(BagageDefinition idBagage)
         {
             return null;
         }

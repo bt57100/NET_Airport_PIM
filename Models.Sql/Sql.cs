@@ -7,40 +7,52 @@ namespace MyAirport.Pim.Models
 {
     public class Sql : AbstractDefinition
     {
-        string strCnx = ConfigurationManager.ConnectionStrings["MyAiport.Pim.Settings.DbConnect"].ConnectionString;
+        private string strCnx = ConfigurationManager.ConnectionStrings["MyAiport.Pim.Settings.DbConnect"].ConnectionString;
 
-        static string LIKE_IATA = " WHERE b.CODE_IATA LIKE @code_iata";
+        private static string EXACT_ID = " WHERE b.ID_BAGAGE = @ID_BAGAGE";
 
-        static string EXACT_ID = " WHERE b.ID_BAGAGE=@id_bagage";
+        private static string EXACT_IATA = " WHERE b.CODE_IATA = @CODE_IATA";
 
-        static string EXACT_IATA = " WHERE b.CODE_IATA = @code_iata";
+        private static string LIKE_IATA = " WHERE b.CODE_IATA LIKE @CODE_IATA";
 
-        static string GET_BAGAGE = "SELECT b.ID_BAGAGE, b.CODE_IATA, co.NOM AS 'COMPAGNIE', b.LIGNE, b.DATE_CREATION ,b.PRIORITAIRE, b.DESTINATION, b.EN_CONTINUATION, cast(iif(bp.PARTICULARITE is null, 0, 1) as bit) as 'RUSH'"
+        private static string GET_BAGAGE = "SELECT b.ID_BAGAGE, b.CODE_IATA, co.NOM AS 'COMPAGNIE', b.LIGNE, b.DATE_CREATION ,b.PRIORITAIRE, b.DESTINATION, b.EN_CONTINUATION, cast(iif(bp.PARTICULARITE is null, 0, 1) as bit) as 'RUSH'"
             + " FROM BAGAGE b"
             + " LEFT JOIN BAGAGE_A_POUR_PARTICULARITE bap ON bap.ID_BAGAGE=b.ID_BAGAGE"
             + " LEFT JOIN BAGAGE_PARTICULARITE bp ON bp.ID_PART=bap.ID_PARTICULARITE"
             + " LEFT JOIN COMPAGNIE co ON co.CODE_IATA=b.COMPAGNIE";
 
-        static string GET_COMPANY = "SELECT b.ID_COMPAGNIE FROM COMPAGNIE b";
+        private static string GET_COMPANY = "SELECT b.ID_COMPAGNIE FROM COMPAGNIE b";
 
-        static string UPDATE_BAGAGE = "UPDATE BAGAGE b "
-            + " SET b.ID_VOL = @ID_VOL, b.CODE_IATA = @CODE_IATA, b.ORIGINE_CREATION = @ORIGINE_CREATION, b.DATE_CREATION = @DATE_CREATION, b.CLASSE = @CLASSE, b.PRIORITAIRE = @PRIORITAIRE, b.STA = '', b.LOCAL_TRANFERT = @LOCAL_TRANFERT, b.NSUR = @NSUR, b.SSUR = @SSUR, b.ISUR = @ISUR, b.TSUR = @TSUR, b.GSUR = @GSUR, b.CSUR = @CSUR, b.DESTINATION = @DESTINATION, b.ESCALE = @ESCALE, b.EMB = @EMB, b.RECOLE = @RECOLE, b.COMPAGNIE = @COMPAGNIE, b.LIGNE = @LIGNE, b.JOUR_EXPLOITATION = @JOUR_EXPLOITATION, b.CONTINUATION = @CONTINUATION, b.STATUT_EJECTION = @STATUT_EJECTION, b.STATUT_TEMPOREL = @STATUT_TEMPOREL, b.DCS_EMETTEUR = @DCS_EMETTEUR, b.ORIGINE_SAFIR = @ORIGINE_SAFIR, b.EN_CONTINUATION = @EN_CONTINUATION, b.EN_TRANSFERT = @EN_TRANSFERT";
+        private static string UPDATE_BAGAGE = "UPDATE BAGAGE"
+            + " SET [PRIORITAIRE] = @PRIORITAIRE, [DESTINATION] = @DESTINATION, [LIGNE] = @LIGNE, [EN_CONTINUATION] = @EN_CONTINUATION";
 
-        static string INSERT_BAGAGE = "INSERT INTO BAGAGE ([CODE_IATA], [DATE_CREATION], [JOUR_EXPLOITATION], [ORIGINE_CREATION], [PRIORITAIRE], [DESTINATION], [COMPAGNIE], [LIGNE], [EN_CONTINUATION])"
+        private static string INSERT_BAGAGE = "INSERT INTO BAGAGE ([CODE_IATA], [DATE_CREATION], [JOUR_EXPLOITATION], [ORIGINE_CREATION], [PRIORITAIRE], [DESTINATION], [COMPAGNIE], [LIGNE], [EN_CONTINUATION])"
             + " VALUES (@CODE_IATA, SYSDATETIME(), 2, 'D', @PRIORITAIRE, @DESTINATION, @COMPAGNIE, @LIGNE, @EN_CONTINUATION);";
 
-        static string INSERT_PARTICULARITE = "INSERT INTO BAGAGE_A_POUR_PARTICULARITE ([ID_BAGAGE], [ID_PARTICULARITE])"
-            + " VALUES (@ID_BAGAGE, 1)";
+        private static string INSERT_PARTICULARITE = "INSERT INTO BAGAGE_A_POUR_PARTICULARITE ([ID_BAGAGE], [ID_PARTICULARITE])"
+            + " VALUES (@ID_BAGAGE, 1)"
+            + " WHERE NOT EXISTS ( SELECT * FROM BAGAGE_A_POUR_PARTICULARITE WHERE [ID_BAGAGE] = @ID_BAGAGE);";
 
-        static string GET_INSERT = "SELECT SCOPE_IDENTITY()";
+        private static string DELETE_PARTICULARITE = "DELETE FROM BAGAGE_A_POUR_PARTICULARITE WHERE [ID_BAGAGE]=@ID_BAGAGE";
+
+        private static string GET_INSERT = "SELECT SCOPE_IDENTITY()";
 
         public override List<BagageDefinition> GetBagage(string codeIataBagage)
         {
             List<BagageDefinition> bagList = new List<BagageDefinition>();
+            String codeIata = "";
+            if(codeIataBagage.Length == 12)
+            {
+                codeIata = codeIataBagage;
+            } 
+            else if (codeIataBagage.Length == 6)
+            {
+                codeIata = "____" + codeIataBagage + "00";
+            }
             using (SqlConnection cnx = new SqlConnection(strCnx))
             {
                 SqlCommand cmd = new SqlCommand(GET_BAGAGE + LIKE_IATA, cnx);
-                cmd.Parameters.AddWithValue("@code_iata", "____" + codeIataBagage + "00");
+                cmd.Parameters.AddWithValue("@CODE_IATA", codeIata);
                 cnx.Open();
                 bagList = executeQuery(cmd);
             }
@@ -53,7 +65,7 @@ namespace MyAirport.Pim.Models
             using (SqlConnection cnx = new SqlConnection(strCnx))
             {
                 SqlCommand cmd = new SqlCommand(GET_BAGAGE + EXACT_ID, cnx);
-                cmd.Parameters.AddWithValue("@id_bagage", idBagage);
+                cmd.Parameters.AddWithValue("@ID_BAGAGE", idBagage);
                 cnx.Open();
                 List<BagageDefinition> bagList = executeQuery(cmd);
                 if(bagList.Count > 0)
@@ -69,7 +81,7 @@ namespace MyAirport.Pim.Models
             int id = 0;
             using (SqlConnection cnx = new SqlConnection(strCnx))
             {
-                if(checkCompanyExist(bagage.Compagnie))
+                if(CheckCompanyExist(bagage.Compagnie))
                 {
                     SqlCommand cmd = new SqlCommand(INSERT_BAGAGE + GET_INSERT, cnx);
                     cmd.Parameters.AddWithValue("@CODE_IATA", bagage.CodeIata);
@@ -89,6 +101,58 @@ namespace MyAirport.Pim.Models
                 }
             }
             return id;
+        }
+
+        private bool CheckCompanyExist(String codeIata)
+        {
+            bool exist = false;
+            using (SqlConnection cnx = new SqlConnection(strCnx))
+            {
+                SqlCommand cmd = new SqlCommand(GET_COMPANY + EXACT_IATA, cnx);
+                cmd.Parameters.AddWithValue("@CODE_IATA", codeIata);
+                cnx.Open();
+                using (SqlDataReader dataReader = cmd.ExecuteReader())
+                {
+                    if (dataReader.HasRows)
+                    {
+                        exist = true;
+                    }
+                }
+            }
+            return exist;
+        }
+        
+        public override BagageDefinition UpdateBagage(BagageDefinition bagage)
+        {
+            using (SqlConnection cnx = new SqlConnection(strCnx))
+            {
+                SqlCommand cmd = new SqlCommand(UPDATE_BAGAGE + EXACT_ID, cnx);
+                cmd.Parameters.AddWithValue("@ID_BAGAGE", bagage.IdBagage);
+                cmd.Parameters.AddWithValue("@EN_CONTINUATION", bagage.EnContinuation);
+                cmd.Parameters.AddWithValue("@LIGNE", bagage.Ligne);
+                cmd.Parameters.AddWithValue("@DESTINATION", bagage.Itineraire);
+                cmd.Parameters.AddWithValue("@PRIORITAIRE", bagage.Prioritaire);
+                cnx.Open();
+                List<BagageDefinition> bagList = executeQuery(cmd);
+                if (bagage.Rush == true)
+                {
+                    SqlCommand cmd2 = new SqlCommand(INSERT_PARTICULARITE, cnx);
+                    cmd2.Parameters.AddWithValue("@ID_BAGAGE", bagage.IdBagage);
+                    cmd2.ExecuteScalar();
+                }
+                else
+                {
+                    SqlCommand cmd2 = new SqlCommand(DELETE_PARTICULARITE, cnx);
+                    cmd2.Parameters.AddWithValue("@ID_BAGAGE", bagage.IdBagage);
+                    cmd2.ExecuteScalar();
+                }
+            }
+            return GetBagage(bagage.IdBagage);
+        }
+
+        public override void DeleteBagage(int idBagage)
+        {
+            throw new NotImplementedException();
         }
 
         private List<BagageDefinition> executeQuery(SqlCommand cmd)
@@ -115,35 +179,6 @@ namespace MyAirport.Pim.Models
                 }
             }
             return bagList;
-        }
-
-        public override BagageDefinition UpdateBagage(int idBagage)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void DeleteBagage(int idBagage)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool checkCompanyExist(String codeIata)
-        {
-            bool exist = false;
-            using (SqlConnection cnx = new SqlConnection(strCnx))
-            {
-                SqlCommand cmd = new SqlCommand(GET_COMPANY + EXACT_IATA, cnx);
-                cmd.Parameters.AddWithValue("@code_iata", codeIata);
-                cnx.Open();
-                using (SqlDataReader dataReader = cmd.ExecuteReader())
-                {
-                    if (dataReader.HasRows)
-                    {
-                        exist = true;
-                    }
-                }
-            }
-            return exist;
         }
     }
 }

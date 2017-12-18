@@ -273,6 +273,12 @@ namespace Client.FormIhm.ServiceReferencePim {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicePim/GetBagageById", ReplyAction="http://tempuri.org/IServicePim/GetBagageByIdResponse")]
         System.Threading.Tasks.Task<Client.FormIhm.ServiceReferencePim.BagageDefinition> GetBagageByIdAsync(int idBagage);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicePim/UpdateBagage", ReplyAction="http://tempuri.org/IServicePim/UpdateBagageResponse")]
+        Client.FormIhm.ServiceReferencePim.BagageDefinition UpdateBagage(Client.FormIhm.ServiceReferencePim.BagageDefinition bagage);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicePim/UpdateBagage", ReplyAction="http://tempuri.org/IServicePim/UpdateBagageResponse")]
+        System.Threading.Tasks.Task<Client.FormIhm.ServiceReferencePim.BagageDefinition> UpdateBagageAsync(Client.FormIhm.ServiceReferencePim.BagageDefinition bagage);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicePim/GetBagageByCodeIata", ReplyAction="http://tempuri.org/IServicePim/GetBagageByCodeIataResponse")]
         [System.ServiceModel.FaultContractAttribute(typeof(Client.FormIhm.ServiceReferencePim.MultipleBagageFault), Action="http://tempuri.org/IServicePim/GetBagageByCodeIataMultipleBagageFaultFault", Name="MultipleBagageFault", Namespace="http://schemas.datacontract.org/2004/07/MyAirport.Pim.Entities")]
         Client.FormIhm.ServiceReferencePim.BagageDefinition GetBagageByCodeIata(string codeIata);
@@ -320,6 +326,14 @@ namespace Client.FormIhm.ServiceReferencePim {
         
         public System.Threading.Tasks.Task<Client.FormIhm.ServiceReferencePim.BagageDefinition> GetBagageByIdAsync(int idBagage) {
             return base.Channel.GetBagageByIdAsync(idBagage);
+        }
+        
+        public Client.FormIhm.ServiceReferencePim.BagageDefinition UpdateBagage(Client.FormIhm.ServiceReferencePim.BagageDefinition bagage) {
+            return base.Channel.UpdateBagage(bagage);
+        }
+        
+        public System.Threading.Tasks.Task<Client.FormIhm.ServiceReferencePim.BagageDefinition> UpdateBagageAsync(Client.FormIhm.ServiceReferencePim.BagageDefinition bagage) {
+            return base.Channel.UpdateBagageAsync(bagage);
         }
         
         public Client.FormIhm.ServiceReferencePim.BagageDefinition GetBagageByCodeIata(string codeIata) {

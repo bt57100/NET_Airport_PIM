@@ -59,5 +59,12 @@ namespace ServicePim
             this.NbAppelInstance++;
             return MyAirport.Pim.Models.Factory.Model.GetBagage(idBagage);
         }
+
+        public BagageDefinition UpdateBagage(BagageDefinition bagage)
+        {
+            NbAppelTotale++;
+            this.NbAppelInstance++;
+            return MyAirport.Pim.Models.Factory.Model.UpdateBagage(bagage);
+        }
     }
 }

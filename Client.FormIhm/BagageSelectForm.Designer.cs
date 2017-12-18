@@ -32,7 +32,7 @@ namespace Client.FormIhm
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }
-            catch (InvalidCastException excp)
+            catch (InvalidCastException)
             {
                 MessageBox.Show("Erreur de sélection");
             }
