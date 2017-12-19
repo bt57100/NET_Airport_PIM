@@ -53,7 +53,7 @@ the priority.*
 <a name="gene"></a>
 #### III. A. General
 1. Clone it from git hub.  
-2. Import it in VisualStudio using solution name `MyAirport.PIM`.
+2. Import it in VisualStudio using solution name `MyAirport.Pim`.
 
 <a name="conf"></a>
 #### III. B. Configuration
