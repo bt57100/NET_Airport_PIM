@@ -1,7 +1,0 @@
-language: csharp
-solution: ./MyAirport.Pim.sln
-install:
-- gacutil -i Microsoft.VisualStudio.ServiceModel.Core.dll
-- travis_retry nuget restore -source "https://www.nuget.org/api/v2" ./MyAirport.Pim.sln
-script:
-- xbuild ./MyAirport.Pim.sln
