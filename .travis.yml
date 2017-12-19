@@ -1,2 +1,6 @@
 language: csharp
-solution: MyAirport.Pim.sln
+solution: ./MyAirport.Pim.sln
+install:
+- travis_retry nuget restore -source "https://www.nuget.org/api/v2" ./MyAirport.Pim.sln
+script:
+- xbuild ./MyAirport.Pim.sln
