@@ -4,13 +4,17 @@ using MyAirport.Pim.Entities;
 
 namespace ServicePim
 {
-    // REMARQUE : vous pouvez utiliser la commande Renommer du menu Refactoriser pour changer le nom de classe "Service1" à la fois dans le code et le fichier de configuration.
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.PerCall)]
     public class ServicePim : IServicePim
     {
         int NbAppelInstance { get; set; }
         public int NbAppelTotale { get; set; }           
 
+        /// <summary>
+        /// Create a new bagage
+        /// </summary>
+        /// <param name="bag"></param>
+        /// <returns>the ID_BAGAGE of the bagage created</returns>
         public int CreateBagage(BagageDefinition bag)
         {
             int id = 0;
@@ -24,6 +28,11 @@ namespace ServicePim
             return id;
         }
         
+        /// <summary>
+        /// Get bagage by CODE_IATA ____<6values>00
+        /// </summary>
+        /// <param name="codeIata"></param>
+        /// <returns>the corresponding bagage</returns>
         public BagageDefinition GetBagageByCodeIata(string codeIata)
         {
             NbAppelTotale++;
@@ -53,6 +62,11 @@ namespace ServicePim
             }
         }
 
+        /// <summary>
+        /// Get bagage by ID_BAGAGE
+        /// </summary>
+        /// <param name="idBagage"></param>
+        /// <returns>the corresponding bagage</returns>
         public BagageDefinition GetBagageById(int idBagage)
         {
             NbAppelTotale++;
@@ -60,6 +74,11 @@ namespace ServicePim
             return MyAirport.Pim.Models.Factory.Model.GetBagage(idBagage);
         }
 
+        /// <summary>
+        /// Update bagage by ID_BAGAGE
+        /// </summary>
+        /// <param name="bagage"></param>
+        /// <returns>the bagage modified</returns>
         public BagageDefinition UpdateBagage(BagageDefinition bagage)
         {
             NbAppelTotale++;

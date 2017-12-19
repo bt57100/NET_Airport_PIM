@@ -4,7 +4,7 @@ using System.Runtime.Serialization;
 namespace MyAirport.Pim.Entities
 {
     /// <summary>
-    /// Définition d'un object bagage
+    /// Definition bagage object 
     /// </summary>
     [DataContract]
     sealed public class BagageDefinition

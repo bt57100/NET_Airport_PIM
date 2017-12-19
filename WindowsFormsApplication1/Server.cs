@@ -13,6 +13,11 @@ namespace WindowsFormsApplication1
 
         private ServiceHost host = null;
 
+        /// <summary>
+        /// Create the server and initialize states
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonCreate_Click(object sender, EventArgs e)
         {
             host = new ServiceHost(typeof(ServicePim.ServicePim));
@@ -26,6 +31,11 @@ namespace WindowsFormsApplication1
             this.textBoxState.Text = "Created";
         }
 
+        /// <summary>
+        /// Change available buttons on state change
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void host_State(object sender, EventArgs e)
         {
             this.textBoxState.Text = this.host.State.ToString();
@@ -36,7 +46,11 @@ namespace WindowsFormsApplication1
             }
         }
 
-
+        /// <summary>
+        /// Open server 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonOpen_Click(object sender, EventArgs e)
         {
             if (this.host != null)

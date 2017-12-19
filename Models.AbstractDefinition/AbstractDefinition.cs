@@ -3,6 +3,10 @@ using System.Collections.Generic;
 
 namespace MyAirport.Pim.Models
 {
+    /// <summary>
+    /// Abstract class AbstractDefinition
+    /// It contains the least requirement of a pim system
+    /// </summary>
     public abstract class AbstractDefinition
     {
         public abstract BagageDefinition GetBagage(int idBagage);

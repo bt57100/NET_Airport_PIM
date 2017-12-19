@@ -4,6 +4,9 @@ using System.Collections.Generic;
 
 namespace MyAirport.Pim.Models
 {
+    /// <summary>
+    /// Native class for AbstractDefinition
+    /// </summary>
     public class Natif : AbstractDefinition
     {
         public override void DeleteBagage(int idBagage)
@@ -11,12 +14,12 @@ namespace MyAirport.Pim.Models
             throw new NotImplementedException();
         }
 
-        public override Entities.BagageDefinition GetBagage(int idBagage)
+        public override BagageDefinition GetBagage(int idBagage)
         {
             return null;
         }
 
-        public override List<Entities.BagageDefinition> GetBagage(string codeIataBagage)
+        public override List<BagageDefinition> GetBagage(string codeIataBagage)
         {
             return null;
         }
