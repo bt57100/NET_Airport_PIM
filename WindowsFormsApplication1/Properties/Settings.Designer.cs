@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WindowsFormsApplication.Properties {
+namespace ServerHost.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

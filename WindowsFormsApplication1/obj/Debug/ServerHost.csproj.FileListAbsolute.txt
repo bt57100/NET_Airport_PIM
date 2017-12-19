@@ -1,6 +1,6 @@
-C:\Users\bt57100\Documents\Visual Studio 2015\Projects\MyAirport.Pim\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication.exe.config
-C:\Users\bt57100\Documents\Visual Studio 2015\Projects\MyAirport.Pim\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication.exe
-C:\Users\bt57100\Documents\Visual Studio 2015\Projects\MyAirport.Pim\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication.pdb
+C:\Users\bt57100\Documents\Visual Studio 2015\Projects\MyAirport.Pim\WindowsFormsApplication1\bin\Debug\ServerHost.exe.config
+C:\Users\bt57100\Documents\Visual Studio 2015\Projects\MyAirport.Pim\WindowsFormsApplication1\bin\Debug\ServerHost.exe
+C:\Users\bt57100\Documents\Visual Studio 2015\Projects\MyAirport.Pim\WindowsFormsApplication1\bin\Debug\ServerHost.pdb
 C:\Users\bt57100\Documents\Visual Studio 2015\Projects\MyAirport.Pim\WindowsFormsApplication1\bin\Debug\ServicePim.dll
 C:\Users\bt57100\Documents\Visual Studio 2015\Projects\MyAirport.Pim\WindowsFormsApplication1\bin\Debug\Entities.dll
 C:\Users\bt57100\Documents\Visual Studio 2015\Projects\MyAirport.Pim\WindowsFormsApplication1\bin\Debug\Models.Factory.dll
@@ -15,7 +15,7 @@ C:\Users\bt57100\Documents\Visual Studio 2015\Projects\MyAirport.Pim\WindowsForm
 C:\Users\bt57100\Documents\Visual Studio 2015\Projects\MyAirport.Pim\WindowsFormsApplication1\bin\Debug\Models.Natif.pdb
 C:\Users\bt57100\Documents\Visual Studio 2015\Projects\MyAirport.Pim\WindowsFormsApplication1\obj\Debug\ServerHost.csprojResolveAssemblyReference.cache
 C:\Users\bt57100\Documents\Visual Studio 2015\Projects\MyAirport.Pim\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Server.resources
-C:\Users\bt57100\Documents\Visual Studio 2015\Projects\MyAirport.Pim\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication.Properties.Resources.resources
+C:\Users\bt57100\Documents\Visual Studio 2015\Projects\MyAirport.Pim\WindowsFormsApplication1\obj\Debug\ServerHost.Properties.Resources.resources
 C:\Users\bt57100\Documents\Visual Studio 2015\Projects\MyAirport.Pim\WindowsFormsApplication1\obj\Debug\ServerHost.csproj.GenerateResource.Cache
-C:\Users\bt57100\Documents\Visual Studio 2015\Projects\MyAirport.Pim\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication.exe
-C:\Users\bt57100\Documents\Visual Studio 2015\Projects\MyAirport.Pim\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication.pdb
+C:\Users\bt57100\Documents\Visual Studio 2015\Projects\MyAirport.Pim\WindowsFormsApplication1\obj\Debug\ServerHost.exe
+C:\Users\bt57100\Documents\Visual Studio 2015\Projects\MyAirport.Pim\WindowsFormsApplication1\obj\Debug\ServerHost.pdb

@@ -174,6 +174,9 @@ namespace Client.FormIhm
             else
             {
                 // if not found display message
+                String tempId = bagageIdTextBox.Text;
+                clearSearch();
+                bagageIdTextBox.Text = tempId;
                 this.label12.Text += " Pas de bagage trouvé pour l'id ";
                 this.label12.Text += bagageIdTextBox.Text;
                 this.label12.Visible = true;
@@ -240,7 +243,10 @@ namespace Client.FormIhm
             }
             else
             {
-                // if not found, display message
+                // if not found, clear all and display message
+                String tempIata = bagageIdTextBox.Text;
+                clearSearch();
+                bagageIdTextBox.Text = tempIata;
                 this.label12.Text += "Pas de bagage trouvé pour le code iata ";
                 this.label12.Text += bagageIdTextBox.Text;
                 this.label12.Visible = true;
@@ -375,7 +381,7 @@ namespace Client.FormIhm
             bagage.EnContinuation = continuationCheckBox.Checked;
             bagage.Itineraire = destinationTextBox.Text;
             bagage.Ligne = lineTextBox.Text;
-            bagage.Prioritaire = !classTextBox.Text.Equals("");
+            bagage.Prioritaire = !(classTextBox.Text.Equals("") || classTextBox.Text.Equals("Non prioritaire"));
             bagage.Rush = rushCheckBox.Checked;
 
             // update in the database and display a message whether it is updated
